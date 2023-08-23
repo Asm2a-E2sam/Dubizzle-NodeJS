@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index"
+    "start": "SET SECRET=654Dubizzle&&nodemon index"
   },
   "repository": {
     "type": "git",
