@@ -1,7 +1,7 @@
 const searchHistoryModel = require(`../models/searchHistory`);
 
 // add new searchHistory
-export var addSearchHistories = async (req, res) => {
+var addSearchHistories = async (req, res) => {
   try {
     var searchHistory = await searchHistoryModel.create(req.body);
     res.status(201).json(searchHistory);
@@ -11,7 +11,7 @@ export var addSearchHistories = async (req, res) => {
 };
 
 // get all searchHistory
-export var getAllSearchHistories = async (req, res) => {
+var getAllSearchHistories = async (req, res) => {
   try {
     var allSearchHistories = await searchHistoryModel.find();
     res.status(201).json(allSearchHistories);
@@ -21,7 +21,7 @@ export var getAllSearchHistories = async (req, res) => {
 };
 
 // Update searchHistory data
-export var updateSearchHistory = async (req, res, next) => {
+var updateSearchHistory = async (req, res, next) => {
   var { id } = req.params;
   var {
     user,
@@ -40,7 +40,7 @@ export var updateSearchHistory = async (req, res, next) => {
 };
 
 //delete searchHistory
-export var deleteSearchHistory = async (req, res) => {
+var deleteSearchHistory = async (req, res) => {
   var id = req.params.id;
   try {
     var deletedSearchHistory = await searchHistoryModel.deleteOne({ _id: id });
@@ -49,3 +49,10 @@ export var deleteSearchHistory = async (req, res) => {
     res.status(422).json({ message: err.message });
   }
 };
+
+module.exports ={
+  getAllSearchHistories,
+  addSearchHistories,
+  updateSearchHistory,
+  deleteSearchHistory,
+}

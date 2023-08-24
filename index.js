@@ -2,8 +2,10 @@ var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
 var cors = require("cors");
-var packageRoutes= require(`./routes/packages`)
-var favoriteRoutes= require(`./routes/favorites`)  // error
+var packageRoutes = require(`./routes/packages`);
+var favoriteRoutes = require(`./routes/favorites`); // error
+var productsRoutes = require(`./routes/product`);
+var searchHistoryRoutes = require("./routes/searchHistory");
 //middle
 app.use(express.json());
 
@@ -13,6 +15,8 @@ app.use(cors());
 //  handle path
 app.use(`/favorites`, favoriteRoutes);
 app.use(`/packages`, packageRoutes);
+app.use(`/products`, productsRoutes);
+app.use(`/searchHistory`, searchHistoryRoutes);
 
 // error handle API not found
 app.use("*", function (req, res, next) {
@@ -25,12 +29,16 @@ app.use(function (err, req, res, next) {
 });
 
 // connect to database
-mongoose.connect("mongodb+srv://olxdb:olxdb123456@cluster0.eyi12hi.mongodb.net/Dubizzle").then(function () {
-  console.log("Dubizzle db is connect");
-})
-.catch(function (err) {
-  console.log(err);
-});
+mongoose
+  .connect(
+    "mongodb+srv://olxdb:olxdb123456@cluster0.eyi12hi.mongodb.net/Dubizzle"
+  )
+  .then(function () {
+    console.log("Dubizzle db is connect");
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
 
 // port
 var port = 5555;

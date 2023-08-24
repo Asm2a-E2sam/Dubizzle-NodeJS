@@ -1,7 +1,7 @@
 const productsModel = require(`../models/product`);
 
 // add new product
-export var addProducts = async (req, res) => {
+var addProducts = async (req, res) => {
   try {
     var product = await productsModel.create(req.body);
     res.status(201).json(product);
@@ -11,7 +11,7 @@ export var addProducts = async (req, res) => {
 };
 
 // get all product
-export var getAllProducts = async (req, res) => {
+var getAllProducts = async (req, res) => {
   try {
     var allProducts = await productsModel.find();
     res.status(201).json(allProducts);
@@ -21,7 +21,7 @@ export var getAllProducts = async (req, res) => {
 };
 
 // Update product data
-export var updateProduct = async (req, res, next) => {
+var updateProduct = async (req, res, next) => {
   var { id } = req.params;
   var {
     title,
@@ -55,7 +55,7 @@ export var updateProduct = async (req, res, next) => {
 };
 
 //delete product
-export var deleteProduct = async (req, res) => {
+var deleteProduct = async (req, res) => {
   var id = req.params.id;
   try {
     var deletedProduct = await productsModel.deleteOne({ _id: id });
@@ -68,7 +68,7 @@ export var deleteProduct = async (req, res) => {
 ///////////////// Filters /////////////////
 
 // filter product by id
-export var getProductByID = async (req, res) => {
+var getProductByID = async (req, res) => {
   var { id } = req.params;
   try {
     var product = await productsModel.findById({ _id: id });
@@ -79,7 +79,7 @@ export var getProductByID = async (req, res) => {
 };
 
 // filter product by title
-export var getProductByTitle = async (req, res) => {
+var getProductByTitle = async (req, res) => {
   var { title } = req.params;
   try {
     var product = await productsModel.findById({ title: title });
@@ -90,7 +90,7 @@ export var getProductByTitle = async (req, res) => {
 };
 
 // filter product by location
-export var getProductByLocation = async (req, res) => {
+var getProductByLocation = async (req, res) => {
   var { location } = req.params;
   try {
     var products = await productsModel.find({ location: location });
@@ -101,7 +101,7 @@ export var getProductByLocation = async (req, res) => {
 };
 
 // filter product by category id
-export var getProductByCategoryID = async (req, res) => {
+var getProductByCategoryID = async (req, res) => {
   var { subCategoryID } = req.params;
   try {
     var products = await productsModel.find({ subCategoryID: subCategoryID });
@@ -112,7 +112,7 @@ export var getProductByCategoryID = async (req, res) => {
 };
 
 // filter product by seller id
-export var getProductBySellerID = async (req, res) => {
+var getProductBySellerID = async (req, res) => {
   var { seller } = req.params;
   try {
     var products = await productsModel.find({ seller: seller });
@@ -123,7 +123,7 @@ export var getProductBySellerID = async (req, res) => {
 };
 
 // filter product by condition
-export var getProductByCondition = async (req, res) => {
+var getProductByCondition = async (req, res) => {
   var { condition } = req.params;
   try {
     var products = await productsModel.find({ condition: condition });
@@ -134,7 +134,7 @@ export var getProductByCondition = async (req, res) => {
 };
 
 // filter product by price
-export var getProductByPrice = async (req, res) => {
+var getProductByPrice = async (req, res) => {
   var { min, max } = req.params;
   try {
     var products = await productsModel.find({
@@ -147,7 +147,7 @@ export var getProductByPrice = async (req, res) => {
 };
 
 ///////////////// Pagination /////////////////
-export var getProductsByPage = async (req, res) => {
+var getProductsByPage = async (req, res) => {
     var { page } = req.params;
     try {
       page = parseInt(page);
@@ -160,3 +160,19 @@ export var getProductsByPage = async (req, res) => {
       res.status(422).json({ message: err.message });
     }
 };
+
+
+module.exports= {
+  addProducts,
+  getAllProducts,
+  updateProduct,
+  deleteProduct,
+  getProductByID,
+  getProductByCategoryID,
+  getProductBySellerID,
+  getProductByCondition,
+  getProductByLocation,
+  getProductByTitle,
+  getProductsByPage,
+  getProductByPrice
+}

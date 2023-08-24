@@ -10,7 +10,7 @@ const productsSchema = new mongoose.Schema(
       required: true,
     },
     price: {
-      type: double,
+      type: Number,
       required: true,
     },
     currency: {
