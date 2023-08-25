@@ -23,15 +23,21 @@ app.use(`/searchHistory`, searchHistoryRoutes);
 app.use("/subCat", subCategoryRoute);
 app.use("/user", userRoute);
 
+
 // error handle API not found
-app.use("*", function (req, res, next) {
-  res.status(404).json({ message: " API Not Found please, try again" });
-});
+// app.use("*", function (req, res, next) {
+//   res.status(404).json({ message: " API Not Found please, try again" });
+// });
 
 //error not handle
-app.use(function (err, req, res, next) {
-  res.status(500).json({ message: `Error :( ! ${err.message}` });
-});
+// app.use(function (err, req, res, next) {
+//   res.status(500).json({ message: `Error :( ! ${err.message}` });
+// });
+
+//error haddling Middleware
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+app.use(notFound);
+app.use(errorHandler);
 
 // connect to database
 mongoose
