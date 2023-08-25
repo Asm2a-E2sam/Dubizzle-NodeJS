@@ -6,6 +6,9 @@ var packageRoutes = require(`./routes/packages`);
 var favoriteRoutes = require(`./routes/favorites`); // error
 var productsRoutes = require(`./routes/product`);
 var searchHistoryRoutes = require("./routes/searchHistory");
+var subCategoryRoute= require(`./routes/subCategoriesRoute`) // Done
+const userRoute = require("./routes/userRoute"); //Done
+
 //middle
 app.use(express.json());
 
@@ -17,6 +20,8 @@ app.use(`/favorites`, favoriteRoutes);
 app.use(`/packages`, packageRoutes);
 app.use(`/products`, productsRoutes);
 app.use(`/searchHistory`, searchHistoryRoutes);
+app.use("/subCat", subCategoryRoute);
+app.use("/user", userRoute);
 
 // error handle API not found
 app.use("*", function (req, res, next) {
