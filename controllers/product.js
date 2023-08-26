@@ -82,7 +82,7 @@ var getProductByID = async (req, res) => {
 var getProductByTitle = async (req, res) => {
   var { title } = req.params;
   try {
-    var product = await productsModel.findById({ title: title });
+    var product = await productsModel.find({ title: title });
     res.status(201).json(product);
   } catch (err) {
     res.status(422).json({ message: err.message });
@@ -151,7 +151,7 @@ var getProductsByPage = async (req, res) => {
     var { page } = req.params;
     try {
       page = parseInt(page);
-      var itemsPerPage = 15;
+      var itemsPerPage = 4;
       var skip = (page - 1) * itemsPerPage;
   
       var products = await productsModel.find().skip(skip).limit(itemsPerPage);

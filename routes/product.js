@@ -24,17 +24,17 @@ router.route("/:id")
   .delete(deleteProduct)
   .get(getProductByID);
 
-router.get("/:subCategoryID", getProductByCategoryID);
+router.get("/subCategoryID/:subCategoryID", getProductByCategoryID);
 
-router.get("/:seller", getProductBySellerID);
+router.get("/seller/:seller", getProductBySellerID);
 
-router.get("/:condition", getProductByCondition);
+router.get("/condition/:condition", getProductByCondition);
 
-router.get("/:location", getProductByLocation);
+router.get("/location/:location", getProductByLocation);
 
-router.get("/:title", getProductByTitle);
+router.get("/title/:title", getProductByTitle);
 
-router.get("/:page", getProductsByPage);
+router.get("/page/:page", getProductsByPage);
 
 router.get('/:min/:max', getProductByPrice);
 
