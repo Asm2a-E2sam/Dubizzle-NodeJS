@@ -8,6 +8,9 @@ var productsRoutes = require(`./routes/product`);
 var searchHistoryRoutes = require("./routes/searchHistory");
 var subCategoryRoute= require(`./routes/subCategoriesRoute`) // Done
 const userRoute = require("./routes/userRoute"); //Done
+const adminRoute = require("./routes/admins");
+const categoryRoute = require("./routes/categories"); 
+
 
 //middle
 app.use(express.json());
@@ -22,6 +25,8 @@ app.use(`/products`, productsRoutes);
 app.use(`/searchHistory`, searchHistoryRoutes);
 app.use("/subCat", subCategoryRoute);
 app.use("/user", userRoute);
+app.use("/admins", adminRoute);
+app.use("/categories", categoryRoute);
 
 
 // error handle API not found
