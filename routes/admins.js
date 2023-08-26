@@ -8,7 +8,6 @@ const {
   updateAdmin,
   deleteAdmin,
   getAdminByEmail,
-  getAdminByEmailQ,
 } = require("../controllers/admins");
 
 router.post("/", createAdmin);
@@ -17,11 +16,9 @@ router.get("/", getAllAdmins);
 // router.route("/").get(getAllAdmins); 
 
 router.get("/:id", getAdmin);
+
 // router parameter
 router.get("/email/:email", getAdminByEmail);
-//query parameter
-router.get("/email", getAdminByEmailQ);
-
 
 router.patch("/:id", updateAdmin);
 

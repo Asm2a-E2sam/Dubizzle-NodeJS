@@ -48,20 +48,7 @@ async function getAdminByEmail(req, res) {
   }
 }
 
-// query
-async function getAdminByEmailQ(req, res) {
-  var { email } = req.query;
 
-  try {
-    const admin = await adminModel.findOne({ email: email });
-    if (!admin) {
-      throw new Error("Admin not found");
-    }
-    res.status(200).json(admin);
-  } catch (error) {
-    res.status(402).json({ message: error.message });
-  }
-}
 
 async function updateAdmin(req, res) {
   var id = req.params.id;
@@ -94,5 +81,4 @@ module.exports = {
   updateAdmin,
   deleteAdmin,
   getAdminByEmail,
-  getAdminByEmailQ,
 };
