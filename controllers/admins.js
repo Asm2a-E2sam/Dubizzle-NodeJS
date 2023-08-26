@@ -49,7 +49,7 @@ async function getAdminByEmail(req, res) {
 }
 
 // query
-async function getAdminByEmail(req, res) {
+async function getAdminByEmailQ(req, res) {
   var { email } = req.query;
 
   try {
