@@ -42,6 +42,7 @@ const productsSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    collection: "products"
   }
 );
 const productsModel = mongoose.model(`products`, productsSchema);

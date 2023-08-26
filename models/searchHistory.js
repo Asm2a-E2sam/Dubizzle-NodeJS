@@ -13,6 +13,7 @@ const searchHistorySchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    collection: "searchHistory"
   }
 );
 const searchHistoryModel = mongoose.model(`searchHistory`, searchHistorySchema);

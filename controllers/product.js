@@ -82,7 +82,7 @@ var getProductByID = async (req, res) => {
 var getProductByTitle = async (req, res) => {
   var { title } = req.params;
   try {
-    var product = await productsModel.findById({ title: title });
+    var product = await productsModel.find({ title: title });
     res.status(201).json(product);
   } catch (err) {
     res.status(422).json({ message: err.message });

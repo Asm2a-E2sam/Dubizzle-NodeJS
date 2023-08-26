@@ -50,9 +50,22 @@ var deleteSearchHistory = async (req, res) => {
   }
 };
 
+// filter searchHistory by id
+var getSearchHistoryByID = async (req, res) => {
+  var { id } = req.params;
+  try {
+    var searchHistories = await searchHistoryModel.findById({ _id: id });
+    res.status(201).json(searchHistories);
+  } catch (err) {
+    res.status(422).json({ message: err.message });
+  }
+};
+
+
 module.exports ={
   getAllSearchHistories,
   addSearchHistories,
   updateSearchHistory,
   deleteSearchHistory,
+  getSearchHistoryByID
 }
